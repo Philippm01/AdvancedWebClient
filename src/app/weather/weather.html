@@ -1,1 +1,26 @@
-<p>weather works!</p>
+@if (forecast.length > 0) {
+    <table>
+    <caption>Weather Data</caption>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temperature (Celsius)</th>
+                <th>Temperature (Fahrenheit)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (weather of forecast; track $index){
+                <tr>
+                    <td>{{ weather.date }}</td>
+                    <td>{{ weather.temperatureC }}</td>
+                    <td>{{ weather.temperatureF }}</td>
+                    <td>{{ weather.summary }}</td>
+                </tr>
+            }
+        </tbody>
+        </table>
+}
+@else {
+    <div cdkAriaLive="polite">Loading...</div>
+}
