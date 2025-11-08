@@ -1,4 +1,4 @@
-@if (forecast.length > 0) {
+
     <table>
     <caption>Weather Data</caption>
         <thead>
@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (weather of forecast; track $index){
+            @for (weather of (forecast$ | async); track $index){
                 <tr>
                     <td>{{ weather.date }}</td>
                     <td>{{ weather.temperatureC }}</td>
@@ -19,8 +19,4 @@
                 </tr>
             }
         </tbody>
-        </table>
-}
-@else {
-    <div cdkAriaLive="polite">Loading...</div>
-}
+    </table>
