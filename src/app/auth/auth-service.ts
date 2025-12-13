@@ -24,12 +24,16 @@ export class AuthService {
     }));
   } 
 
+  getToken(): string | null {
+    return localStorage.getItem(this.token);
+  }
+
   logout(): void {
     localStorage.removeItem(this.token);
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem(this.token) !== null;
+    return this.getToken() !== null;
   }
   
 }
